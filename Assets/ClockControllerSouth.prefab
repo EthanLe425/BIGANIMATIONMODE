@@ -44,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 10544510902566164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f2a2299c1372944699e76914780caa2, type: 3}
+  m_Script: {fileID: 11500000, guid: 67f50d5cb6bb60342913a2e39f4d3a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hourHandPivot: {fileID: 1530894875154681727}
@@ -115,7 +115,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ad351cb47136e2d4284ab57dc488b838, type: 2}
+  - {fileID: 2100000, guid: 09fd69a0831dfda4884ff0b6d9b2b438, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,7 +255,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ad351cb47136e2d4284ab57dc488b838, type: 2}
+  - {fileID: 2100000, guid: 09fd69a0831dfda4884ff0b6d9b2b438, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -395,7 +395,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ad351cb47136e2d4284ab57dc488b838, type: 2}
+  - {fileID: 2100000, guid: 09fd69a0831dfda4884ff0b6d9b2b438, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
