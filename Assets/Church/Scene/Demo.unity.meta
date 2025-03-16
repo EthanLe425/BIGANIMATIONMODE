@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 90b2b4bac717fe147b53fd23293f4627
+timeCreated: 1517160847
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 110307
+  packageName: Church Model
+  packageVersion: 1.0
+  assetPath: Assets/Church/Scene/Demo.unity
+  uploadId: 226879
