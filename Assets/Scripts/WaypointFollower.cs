@@ -37,6 +37,7 @@ public class WaypointFollower : MonoBehaviour
 
             transform.position = pos2;
             transform.rotation = rot2;
+            Debug.Log(curr);
             curr++;
         }
     }
