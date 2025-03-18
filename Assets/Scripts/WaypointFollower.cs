@@ -40,5 +40,26 @@ public class WaypointFollower : MonoBehaviour
             Debug.Log(curr);
             curr++;
         }
+        float back = 1.5f;
+        float durr = 0f;
+        Vector3 eA = transform.eulerAngles;
+        eA.x += 90;
+        eA.y -= 90;
+        while(durr<back)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(eA), durr/back);
+            durr += Time.deltaTime;
+            yield return null;
+        }
+        transform.rotation = Quaternion.Euler(eA);
+        durr = 0f;
+        back = 8f;
+        while (durr < back)
+        {
+            transform.position = Vector3.Lerp(transform.position, transform.position-(transform.forward*0.05f), durr / back);
+            durr += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = transform.position - (transform.forward * 0.05f);
     }
 }
