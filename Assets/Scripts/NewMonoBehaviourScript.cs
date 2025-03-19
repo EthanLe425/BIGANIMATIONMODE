@@ -5,60 +5,22 @@ public class Plane : MonoBehaviour
 {
     public Transform[] waypoints;
     public float time = 1f;
-    public float rotS = 2f;
-    private int curr = 0;
+    public float rotS = 12f;
 
     void Start()
     {
-        if (waypoints.Length > 0)
-        {
-            StartCoroutine(FollowPath());
-        }
+        StartCoroutine(FollowPath());
     }
     IEnumerator FollowPath()
     {
-        while (curr < waypoints.Length - 1)
-        {
-            Vector3 pos1 = transform.position;
-            Vector3 pos2 = waypoints[curr + 1].position;
-            float currTime = 0f;
-            Quaternion rot1 = transform.rotation;
-            Quaternion rot2 = Quaternion.LookRotation(pos2 - pos1);
-
-            while (currTime < time)
-            {
-                transform.position = Vector3.Lerp(pos1, pos2, currTime / time);
-                transform.rotation = Quaternion.Slerp(rot1, rot2, currTime / (time / rotS));
-
-                currTime += Time.deltaTime;
-                yield return null;
-            }
-
-            transform.position = pos2;
-            transform.rotation = rot2;
-            Debug.Log(curr);
-            curr++;
-        }
-        float back = 1.5f;
+        yield return new WaitForSeconds(7.5f);
         float durr = 0f;
-        Vector3 eA = transform.eulerAngles;
-        eA.x += 90;
-        eA.y -= 90;
-        while (durr < back)
+        while(durr<4f)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(eA), durr / back);
+            transform.position+=transform.up*rotS*Time.deltaTime;
             durr += Time.deltaTime;
             yield return null;
         }
-        transform.rotation = Quaternion.Euler(eA);
-        durr = 0f;
-        back = 8f;
-        while (durr < back)
-        {
-            transform.position = Vector3.Lerp(transform.position, transform.position - (transform.forward * 0.05f), durr / back);
-            durr += Time.deltaTime;
-            yield return null;
-        }
-        transform.position = transform.position - (transform.forward * 0.05f);
+        gameObject.SetActive(false);
     }
 }
