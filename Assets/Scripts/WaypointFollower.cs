@@ -50,7 +50,7 @@ public class WaypointFollower : MonoBehaviour
                 slide = true;
             }
         }
-        float back = 0.5f;
+        float back = 0.2f;
         float durr = 0f;
         Vector3 eA = transform.eulerAngles; 
         eA.x += 90;
