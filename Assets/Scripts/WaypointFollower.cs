@@ -84,10 +84,10 @@ public class WaypointFollower : MonoBehaviour
         back = 5f;
         while (durr < back)
         {
-            transform.position = Vector3.Lerp(transform.position, transform.position-(transform.forward*1f), durr / back);
+            transform.position = Vector3.Lerp(transform.position, transform.position-(transform.forward*0.1f), durr / back);
             durr += Time.deltaTime;
             yield return null;
         }
-        transform.position = transform.position - (transform.forward * 1f);
+        transform.position = transform.position - (transform.forward * 0.1f);
     }
 }

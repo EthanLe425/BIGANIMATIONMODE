@@ -13,7 +13,7 @@ public class Plane : MonoBehaviour
     }
     IEnumerator FollowPath()
     {
-        yield return new WaitForSeconds(9.6f);
+        yield return new WaitForSeconds(7f);
         float durr = 0f;
         while(durr<6f)
         {
