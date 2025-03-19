@@ -11,7 +11,7 @@ public class WaypointFollower : MonoBehaviour
     public float cubeS = 1f;
     public GameObject cube;
     private bool slide = false;
-
+    public GameObject airplane;
     void Start()
     {
         if (waypoints.Length > 0)
@@ -35,7 +35,7 @@ public class WaypointFollower : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(rot1, rot2, currTime / (time / rotS));
                 if (slide)
                 {
-                    cube.transform.localPosition = Vector3.MoveTowards(cube.transform.localPosition, new Vector3(-0.058f, -0.679f, 0), cubeS * Time.deltaTime);
+                    cube.transform.localPosition = Vector3.MoveTowards(cube.transform.localPosition, new Vector3(0, -0.687f, -0.101f), cubeS * Time.deltaTime);
                 }
                 currTime += Time.deltaTime;
                 yield return null;
@@ -50,10 +50,9 @@ public class WaypointFollower : MonoBehaviour
                 slide = true;
             }
         }
-        cube.SetActive(false);
-        float back = 1.5f;
+        float back = 0.5f;
         float durr = 0f;
-        Vector3 eA = transform.eulerAngles;
+        Vector3 eA = transform.eulerAngles; 
         eA.x += 90;
         eA.y -= 90;
         while(durr<back)
@@ -63,14 +62,32 @@ public class WaypointFollower : MonoBehaviour
             yield return null;
         }
         transform.rotation = Quaternion.Euler(eA);
+        airplane.SetActive(true);
+        airplane.transform.SetParent(null, true);
         durr = 0f;
-        back = 8f;
-        while (durr < back)
+        while (durr < 1f)
         {
-            transform.position = Vector3.Lerp(transform.position, transform.position-(transform.forward*0.05f), durr / back);
+            airplane.transform.position += airplane.transform.up * 5 * Time.deltaTime;
             durr += Time.deltaTime;
             yield return null;
         }
-        transform.position = transform.position - (transform.forward * 0.05f);
+        durr = 0f;
+        eA = new Vector3(airplane.transform.rotation.eulerAngles.x + 90, airplane.transform.rotation.eulerAngles.y, airplane.transform.rotation.eulerAngles.z);
+        while (durr < 1f)
+        {
+            airplane.transform.rotation = Quaternion.Slerp(airplane.transform.rotation, Quaternion.Euler(eA), durr / 1f);
+            durr += Time.deltaTime;
+            yield return null;
+        }
+        airplane.transform.rotation = Quaternion.Euler(eA);
+        durr = 0f;
+        back = 5f;
+        while (durr < back)
+        {
+            transform.position = Vector3.Lerp(transform.position, transform.position-(transform.forward*1f), durr / back);
+            durr += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = transform.position - (transform.forward * 1f);
     }
 }

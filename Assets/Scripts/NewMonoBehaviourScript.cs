@@ -5,7 +5,7 @@ public class Plane : MonoBehaviour
 {
     public Transform[] waypoints;
     public float time = 1f;
-    public float rotS = 12f;
+    public float rotS = 11.3f;
 
     void Start()
     {
@@ -13,9 +13,9 @@ public class Plane : MonoBehaviour
     }
     IEnumerator FollowPath()
     {
-        yield return new WaitForSeconds(7.5f);
+        yield return new WaitForSeconds(9.6f);
         float durr = 0f;
-        while(durr<4f)
+        while(durr<6f)
         {
             transform.position+=transform.up*rotS*Time.deltaTime;
             durr += Time.deltaTime;
