@@ -22,7 +22,6 @@ public class walking1 : MonoBehaviour
     {
         if (Time.time > moveAtTime)
         {
-            transform.Translate(speed * Time.deltaTime * Vector3.forward);
             //calculate what the new Y position will be
             float newY = Mathf.Sin(Time.time * speed) * height + startPos.y;
             //set the object’s Y to the new calculated Y
@@ -30,15 +29,4 @@ public class walking1 : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        Vector3 currentPos = transform.position;
-        float dist = Vector3.Distance(currentPos, startPos);
-
-        // random speed change every 30 feet
-        if (dist % 30 == 0)
-        {
-            speed = Random.Range(0, 10);
-        }
-    }
 }
