@@ -1,16 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class WaypointFollower : MonoBehaviour
+public class Plane : MonoBehaviour
 {
     public Transform[] waypoints;
     public float time = 1f;
     public float rotS = 2f;
-    public int cubert = 50;
     private int curr = 0;
-    public float cubeS = 1f;
-    public GameObject cube;
-    private bool slide = false;
 
     void Start()
     {
@@ -33,10 +29,7 @@ public class WaypointFollower : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(pos1, pos2, currTime / time);
                 transform.rotation = Quaternion.Slerp(rot1, rot2, currTime / (time / rotS));
-                if (slide)
-                {
-                    cube.transform.localPosition = Vector3.MoveTowards(cube.transform.localPosition, new Vector3(-0.058f, -0.679f, 0), cubeS * Time.deltaTime);
-                }
+
                 currTime += Time.deltaTime;
                 yield return null;
             }
@@ -45,20 +38,15 @@ public class WaypointFollower : MonoBehaviour
             transform.rotation = rot2;
             Debug.Log(curr);
             curr++;
-            if(curr==cubert)
-            {
-                slide = true;
-            }
         }
-        cube.SetActive(false);
         float back = 1.5f;
         float durr = 0f;
         Vector3 eA = transform.eulerAngles;
         eA.x += 90;
         eA.y -= 90;
-        while(durr<back)
+        while (durr < back)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(eA), durr/back);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(eA), durr / back);
             durr += Time.deltaTime;
             yield return null;
         }
@@ -67,7 +55,7 @@ public class WaypointFollower : MonoBehaviour
         back = 8f;
         while (durr < back)
         {
-            transform.position = Vector3.Lerp(transform.position, transform.position-(transform.forward*0.05f), durr / back);
+            transform.position = Vector3.Lerp(transform.position, transform.position - (transform.forward * 0.05f), durr / back);
             durr += Time.deltaTime;
             yield return null;
         }
